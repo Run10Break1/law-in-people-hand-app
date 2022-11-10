@@ -236,12 +236,15 @@ class LoginWithSocial extends StatelessWidget {
           const SizedBox(
             width: 4,
           ),
-          Center(
-            child: Text(
-              "$socialName 로그인",
-              style: TextStyle(
-                color: textColor,
-                fontWeight: FontWeight.bold,
+          SizedBox(
+            width: 80,
+            child: Center(
+              child: Text(
+                "$socialName 로그인",
+                style: TextStyle(
+                  color: textColor,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ),
@@ -340,4 +343,13 @@ Future<Map<String, dynamic>?> loginViaNaver() async {
     "nickname" : nickNameValue,
     "phone"    : phoneValue,
   };
+}
+
+Future<Map<String, dynamic>?> loginViaApple() async {
+  final credential = await apple.SignInWithApple.getAppleIDCredential(
+    scopes: [
+      apple.AppleIDAuthorizationScopes.fullName,
+
+    ],
+  );
 }
